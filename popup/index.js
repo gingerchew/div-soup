@@ -1,10 +1,9 @@
 const notSelector = `*:not(div,script,style,link,noscript,template,slot,source,datalist,option,optgroup,track)`;
 
 class Soup {
-
-     static get rules() {
+    static get settings() {
         return new Promise(res => {
-            fetch('../data/rules.json').then(res => res.json()).then(_ => res(_));
+            chrome.storage.sync.get('soupSettings').then(({ soupSettings = {} }) => res(soupSettings))
         });
     }
 
@@ -50,7 +49,8 @@ class Soup {
         this.root.innerHTML = incomingHTML;
 
         const report = [];
-        const rules = await this.rules;
+        const { rules } = await this.settings;
+        console.log(rules);
         for (const { selector, type, message, weight } of rules) {
             const violators = this.root.querySelectorAll(selector);
             

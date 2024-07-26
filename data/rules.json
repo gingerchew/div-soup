@@ -1,56 +1,83 @@
 [
     {
+        "editing": false,
+        "enabled": true,
+        "fromSource": true,
         "selector": "[ping]",
         "type": -1,
         "weight": -0.1,
         "message": "Used outdated tracking methods $ times"
     },
     {
+        "editing": false,
+        "enabled": true,
+        "fromSource": true,
         "selector": "div",
         "weight": 0,
         "type": -1,
-        "message": "Used <code>&lt;div></code> $ times"
+        "message": "Used `<div>` $ times"
     },
     {
+        "editing": false,
+        "enabled": true,
+        "fromSource": true,
         "selector": "div > div:not(:has( > div))",
         "weight": -1,
         "type": -1,
-        "message": "Used single level nested <code>&lt;div></code> elements $ times"
+        "message": "Used single level nested `<div>` elements $ times"
     },
     {
+        "editing": false,
+        "enabled": true,
+        "fromSource": true,
         "selector": "div > div > div:not(:has( > div))",
         "weight": -5,
         "type": -1,
-        "message": "Used double level nested <code>&lt;div></code> elements $ times"
+        "message": "Used double level nested `<div>` elements $ times"
     },
     {
+        "editing": false,
+        "enabled": true,
+        "fromSource": true,
         "selector": "div > div > div > div:not(:has( > div))",
         "weight": -10,
         "type": -1,
-        "message": "Used triple level nested <code>&lt;div></code> elements $ times"
+        "message": "Used triple level nested `<div>` elements $ times"
     },
     {
+        "editing": false,
+        "enabled": true,
+        "fromSource": true,
         "selector": "div > div > div > div > div",
         "weight": -100,
         "type": -1,
-        "message": "Used quadruple level nested <code>&lt;div></code> elements $ times"
+        "message": "Used quadruple level nested `<div>` elements $ times"
     },
     {
+        "editing": false,
+        "enabled": true,
+        "fromSource": true,
         "selector": "[href^='javascript:']",
         "weight": -1000,
         "type": -1,
-        "message": "Used <code>&lt;a></code> tag instead of a button $ times"
+        "message": "Used `<a>` tag instead of a button $ times"
     },
     {
+        "editing": false,
+        "enabled": true,
+        "fromSource": true,
         "selector": "[onclick]:not(button,a,input)",
         "weight": -1000,
         "type": -1,
-        "message": "Used <code>onclick</code> event handler on non-control elements $ times"
+        "message": "Used `onclick` event handler on non-control elements $ times"
     },
     {
+        "editing": false,
+        "enabled": true,
+        "fromSource": true,
         "selector": "*:not(div,script,style,link,noscript,template,slot,source,datalist,option,optgroup,track)",
         "weight": 1,
         "type": 1,
-        "message": "Used elements that were not a <code>&lt;div></code> $ times"
+        "message": "Used elements that were not a `<div>` $ times"
     }
 ]

@@ -13,11 +13,15 @@
     "default_popup": "popup/index.html"
   },
   "options_ui": {
-    "page": "options/index.html",
-    "open_in_tab": false
+    "page": "options/index.html"
   },
   "web_accessible_resources": [{
     "resources": ["./data/rules.json"],
     "matches": ["<all_urls>"]
-  }]
+  }],
+  "browser_specific_settings": {
+    "gecko": {
+      "id":"div-soup@ginger.wtf"
+    }
+  }
 }
