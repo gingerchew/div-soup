@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Your Score</title>
+</head>
+<body>
+    <header>
+        <h1><code>&lt;div></code> Soup Score</h1>
+        <p class="score">Your score:<br/><output id="score"></output></p>
+    </header>
+    <nav>
+        <ul role="list">
+            <li>
+                <a href="./index.html">Home</a>
+            </li>
+            <li>
+                <a href="./explain.html" aria-current="page">Understanding Your Score</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <details name="more" open>
+            <summary>Report</summary>
+            <div>
+                <p>Violations</p>
+                <ol id="reasons"></ol>
+                <p>Good Practice</p>
+                <ol id="good"></ol>
+            </div>
+        </details>
+        <details name="more">
+            <summary>Common Solutions</summary>
+            <div>
+                <ol>
+                    <li>Assess your usage of nested <code>&lt;div></code>.</li>
+                    <li>Remove any links with the <code>[ping]</code> attribute.</li>
+                    <li>Assess your usage of the <code>onclick</code> handler, it should only be added to controls.</li>
+                    <li>Assess your usage of <code>[href="javascript:void(0)"]</code> on <code>&lt;a></code> tags, consider a button instead.</li>
+                </ol>
+            </div>
+        </details>
+    </main>
+    <output id="test" style="display:none;"></output>
+    <script src="./index.js"></script>
+</body>
+</html>
