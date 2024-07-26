@@ -17,10 +17,16 @@ function getTab() {
   return chrome.tabs.query({ active: true, currentWindow: true }, ([{ id }]) => id);
 }
 
-chrome.runtime.onInstalled.addListener(({ reason }) => {
+chrome.runtime.onInstalled.addListener(async ({ reason }) => {
   if (reason == chrome.runtime.OnInstalledReason.INSTALL) {
     chrome.runtime.openOptionsPage();
   }
+
+  const initialRules = await (await fetch('./data/rules.json')).json();
+
+  chrome.storage.sync.set({
+    soupSettings: { rules: initialRules },
+  });
 });
 
 chrome.action.onClicked.addListener(() => {
