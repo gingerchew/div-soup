@@ -8,6 +8,10 @@ Worried you might be forcing your users to swim around in a bunch of `<div>`'s w
 
 Clone the repo, load into your browser as an unpacked extension, go to your webpage and click the extension icon. A score will be generated based on the rules below:
 
+## ToDo:
+
+- [ ] Add options to add custom rules and weights
+
 ## The Rules:
 
 - -0.5 points for every `div > div:not(:has( > div))` on the page.
