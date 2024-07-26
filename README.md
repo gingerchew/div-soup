@@ -16,7 +16,7 @@ Clone the repo, load into your browser as an unpacked extension, go to your webp
 - -10 points for every `div > div > div > div:not(:has( > div))` on the page.
 - -100 points for every `div > div > div > div > div` on the page.
 - -1000 points for every use of `[href^="javascript:"]` and `[onclick]:not(button,a,input)`
-- +1 point for every `*not(div,script,style,link,noscript,template,slot,source,datalist,option,optgroup,track)` in the body[^1]
+- +1 point for every `*:not(div,script,style,link,noscript,template,slot,source,datalist,option,optgroup,track)` in the body[^1]
 
 ### Tracked but not scored:
 

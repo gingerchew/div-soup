@@ -1,4 +1,4 @@
-const notSelector = `*not(div,script,style,link,noscript,template,slot,source,datalist,option,optgroup,track)`;
+const notSelector = `*:not(div,script,style,link,noscript,template,slot,source,datalist,option,optgroup,track)`;
 
 class Soup {
     static rules = {
