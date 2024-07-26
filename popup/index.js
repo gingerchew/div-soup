@@ -3,9 +3,9 @@ const notSelector = `*:not(div,script,style,link,noscript,template,slot,source,d
 class Soup {
     static rules = {
         'div': 0,
-        'div > div:not(:has( > div))': -0.5,
+        'div > div:not(:has( > div))': -1,
         '[ping]': -0.1,
-        'div > div > div:not(:has( > div))': -1,
+        'div > div > div:not(:has( > div))': -5,
         'div > div > div > div:not(:has( > div))': -10,
         'div > div > div > div > div': -100,
         '[href^="javascript:"]': -1000,
@@ -97,6 +97,7 @@ class Soup {
 
         for (const [selector, score] of Object.entries(this.rules)) {
             const violators = this.root.querySelectorAll(selector);
+            console.log(violators);
             if (violators.length === 0) continue;
             violators.forEach(_ => this.score += score);
             const { type, message } = this.reasons[selector];
@@ -106,7 +107,7 @@ class Soup {
         if (this.compareDivToNonDiv()) {
             report.push([1, `Used more non-<code>&lt;div></code> elements than <code>&lt;div></code> elements`])
         }
-
+        console.log(this.score);
         if (this.score > 0) this.score = 0;
         requestAnimationFrame(() => {
             this.output.textContent = this.score;
