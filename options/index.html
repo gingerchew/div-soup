@@ -4,8 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>&lt;div> Soup Options</title>
+    <style>
+        code {
+            padding: 0.5ch 1ch;
+            background-color: #edefff;
+        }
+        [role="list"] {
+            list-style-type: none;
+            margin: 0;
+            display: flex;
+            flex-flow: column;
+            gap: 1.5ch;
+            padding: 0;
+        }
+        .rule {
+            display: grid;
+            grid-template-areas:
+                "s m m"
+                "w t t"
+                "c c c";
+            gap: 1ch;
+        }
+        .selector {
+            grid-area: s;
+            code {
+                word-break: break-all;
+            }
+        }
+        .message {
+            grid-area: m;
+        }
+        .type {
+            grid-area: t;
+        }
+        .weight {
+            grid-area: w;
+        }
+        .controls {
+            grid-area: c;
+        }
+        fieldset {
+            display: flex;
+            flex-flow: column;
+            font-size: 1.15rem;
+            gap: 0.5ch;
+        }
+        .disabled,
+        .editing {
+            background-color: #edefff;
+        }
+        .disabled {
+            &:not(.editing) :is(.type, .weight, .message, .selector) {
+                opacity: 0.5;
+            }
+        }
+        .editing {
+            padding: 0.5ch 1ch;
+        }
+    </style>
 </head>
 <body>
+    <blockquote>WARNING: Adding new rules is finnicky at the moment. I would avoid adding your own as they would get wiped out with any updates.</blockquote>
     <h1>Options</h1>
+    <button id="refreshList">Refresh List</button>
+    <form onsubmit="saveOptions">
+        <fieldset id="newRule">
+            <legend>Add new rule</legend>
+            <label for="selector">Selector <small>Must be a valid CSS selector.</small></label>
+            <input id="selector" name="selector" />
+            <label for="type">Type <small>Must be either -1 or 1</small></label>
+            <input id="type" name="type" value="-1" />
+            <label for="weight">Weight <small>How much will this rule affect the score?</small></label>
+            <input id="weight" name="weight" value="1"/>
+            <label for="message">Message <small>Explain the rule, use a <code>$</code> to access the number of times a rule occurred. Wrap HTML element with <code>`</code> grave marks to wrap them with <code>&lt;code></code> elements.</small></label>
+            <textarea name="message" id="message"></textarea>
+            <input type="hidden" name="editing" value="false" />
+            <input type="hidden" name="enabled" value="true" />
+            <input type="hidden" name="fromSource" value="false">
+            <button type="button" id="saveRule">Save Rule</button>
+        </fieldset>
+        <ul id="existingRules" role="list">
+            
+        </ul>
+    </form>
+    <script src="./index.js" defer></script>
 </body>
 </html>
