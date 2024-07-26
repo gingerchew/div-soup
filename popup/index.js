@@ -57,7 +57,7 @@ class Soup {
             if (violators.length === 0) continue;
             violators.forEach(_ => this.score += weight);
             // const { type, message } = this.reasons[selector];
-            report.push([type, message.replace(/\$/, `<b>${violators.length}</b>`)]);
+            report.push([type, message.replaceAll(/</g, '&lt;').replaceAll(/(`)(.*?)(`)/g, '<code>$2</code>').replace(/\$/, `<b>${violators.length}</b>`)]);
         }
 
         if (this.compareDivToNonDiv()) {

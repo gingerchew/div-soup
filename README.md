@@ -11,6 +11,13 @@ Clone the repo, load into your browser as an unpacked extension, go to your webp
 ## ToDo:
 
 - [ ] Add options to add custom rules and weights
+- [ ] Add a button to reveal the true score (remove upper limit of 0)
+
+## How do I get a score above 0?
+
+**A `0` is a perfect score.**
+
+This choice was made because of how content on the web works. A site that has an atrocious card component could get a really high score because the blog page has 10,000 `<p>`, `<span>`, `<i>`, `<strong>`, etc tags.
 
 ## The Rules:
 
