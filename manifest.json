@@ -12,12 +12,6 @@
   "action": {
     "default_popup": "popup/index.html"
   },
-  "content_schrips": [
-    {
-      "matches": ["https://*/*"],
-      "js":["soup.js"]
-    }
-  ],
   "options_ui": {
     "page": "options/index.html",
     "open_in_tab": false
