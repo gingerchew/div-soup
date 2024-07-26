@@ -49,7 +49,7 @@
         "enabled": true,
         "fromSource": true,
         "selector": "div > div > div > div > div",
-        "weight": -100,
+        "weight": -25,
         "type": -1,
         "message": "Used quadruple level nested `<div>` elements $ times"
     },
@@ -60,7 +60,7 @@
         "selector": "[href^='javascript:']",
         "weight": -1000,
         "type": -1,
-        "message": "Used `<a>` tag instead of a button $ times"
+        "message": "Used `<a>` tag instead of a `<button>` $ times"
     },
     {
         "editing": false,

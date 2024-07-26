@@ -11,9 +11,11 @@ html {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   background-color: #fff !important;
+  color: #121114;
 }
 body {
-    background-color: inherit !important;
+  background-color: inherit !important;
+  color: inherit !important;
 }
 
 /* Remove default margin in favour of better control in authored CSS */
