@@ -113,8 +113,8 @@ ol li::marker {
 /* Output */
 #score {
     display: block;
-    background-color: var(--bg, #ABF5D1);
-    color: var(--c, #121114);
+    background-color: var(--bg, #ABF5D1) !important;
+    color: var(--c, #121114) !important;
 }
 
 .less-than-100 {
