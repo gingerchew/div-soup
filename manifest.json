@@ -21,5 +21,9 @@
   "options_ui": {
     "page": "options/index.html",
     "open_in_tab": false
-  }
+  },
+  "web_accessible_resources": [{
+    "resources": ["./data/rules.json"],
+    "matches": ["<all_urls>"]
+  }]
 }
