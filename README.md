@@ -21,11 +21,11 @@ This choice was made because of how content on the web works. A site that has an
 
 ## The Rules:
 
-- -0.5 points for every `div > div:not(:has( > div))` on the page.
+- -1 points for every `div > div:not(:has( > div))` on the page.
 - -1 point for every use of the `[ping]` attribute on the page.
-- -1 point for every `div > div > div:not(:has( > div))` on the page.
+- -5 point for every `div > div > div:not(:has( > div))` on the page.
 - -10 points for every `div > div > div > div:not(:has( > div))` on the page.
-- -100 points for every `div > div > div > div > div` on the page.
+- -25 points for every `div > div > div > div > div` on the page.
 - -1000 points for every use of `[href^="javascript:"]` and `[onclick]:not(button,a,input)`
 - +1 point for every `*:not(div,script,style,link,noscript,template,slot,source,datalist,option,optgroup,track)` in the body[^1]
 
@@ -37,7 +37,7 @@ This choice was made because of how content on the web works. A site that has an
 
 ## Reasoning behind scoring:
 
-Let's face it. Using a `<div>` here and there doesn't make you a bad developer. Using a `<div>` instead of a button, well, it at least makes you inconsiderate. The [cost of JavaScript](https://timkadlec.com/remembers/2020-04-21-the-cost-of-javascript-frameworks/) in comparison to HTML (essentially free!) may lead you to believe that excessive `<div>` soup is not a big deal. In fact, [a hefty DOM full of redundant elements can be very taxing](https://web.dev/articles/dom-size-and-interactivity).
+Let's face it. Using a `<div>` here and there doesn't make you a bad developer. Using a `<div>` instead of a button, well, it at least makes you inconsiderate. The [cost of JavaScript](https://timkadlec.com/remembers/2020-04-21-the-cost-of-javascript-frameworks/) in comparison to HTML (essentially free!) may lead you to believe that excessive `<div>` soup is not a big deal. In fact, [a hefty DOM full of redundant elements can be very taxing](https://web.dev/articles/dom-size-and-interactivity) not to mention meaningless and hard to navigate for screen readers.
 
 This is why even though `<div>` soup tracks the number of total `<div>`'s used, it does *not* penalize you for using them. It only penalizes for repeated nesting. Take the following markup for example:
 
@@ -86,13 +86,11 @@ This brings the score from -21.5 to 0. Using the `<time>` makes our site machine
 
 ### `[href^="javascript:"]`
 
-The goal behind adding this selector was to decimate the score of any site that doesn't use a `<button>`. A dropdown menu? `<button>`! Triggering a popup? `<button>`! Clicking on a link that is styled to look like a button and is programmed to do button things? `<button>`!!
+The goal behind adding this selector was to decimate the score of any site that doesn't use a `<button>` when they should. A dropdown menu? `<button>`! Triggering a popup? `<button>`! Clicking on a link that is styled to look like a button and is programmed to do button things? `<button>`!!
 
 ### `[onclick]:not(button, a, input)`
 
 Stop adding click handlers to `<div>` and non-control type elements!
-
-
 
 [^1]: The goal is to use semantic elements. `script`,`style`,`link`,`noscript`,`template`, and `slot` are excluded because they are used by the author, and hold no meaning for the user. `datalist`,`option`, and `optgroup` are excluded because they exist within controls and could lead to false positives. `source` and `track` are excluded because they are used in tandem with media elements `video`, `audio`, `img`, and `picture` and could lead to false positives.
 
