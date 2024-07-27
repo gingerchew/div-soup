@@ -23,7 +23,7 @@ import Layout from '../layouts/Layout.astro';
 <script>
 	import { actions } from 'astro:actions';
 	import { Soup } from '../components/Soup.js';
-	import rules from '../../../data/rules.json';
+	import { rules } from '../lib/rules.js'
 	const form = document.querySelector('form');
 	const parser = new DOMParser();
 	form?.addEventListener('submit', async (e) => {
