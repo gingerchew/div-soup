@@ -37,6 +37,7 @@ export class Soup {
     static root = document.getElementById('test')
     static report = document.getElementById('reasons')
     static good = document.getElementById('good')
+    static outputClasses = this.output.className;
 
     static compareDivToNonDiv() {
         const divs = this.root.querySelectorAll('div');
@@ -44,19 +45,26 @@ export class Soup {
         return divs.length < non.length;
     }
 
-    static async test(incomingHTML, rules) {
+    static reset() {
+        this.report.innerHTML = '';
+        this.good.innerHTML = '';
         this.score = 0;
+        this.output.className = this.outputClasses;
+    }
+
+    static async test(incomingHTML, rules) {
+        this.reset();
+
         this.root.innerHTML = incomingHTML;
 
         const report = [];
-        // const { rules } = await this.settings;
         
         for (const { selector, type, message, weight } of rules) {
             const violators = this.root.querySelectorAll(selector);
             
             if (violators.length === 0) continue;
             violators.forEach(_ => this.score += weight);
-            // const { type, message } = this.reasons[selector];
+
             report.push([type, message.replaceAll(/</g, '&lt;').replaceAll(/(`)(.*?)(`)/g, '<code>$2</code>').replace(/\$/, `<b>${violators.length}</b>`)]);
         }
 

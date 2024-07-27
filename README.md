@@ -12,6 +12,8 @@ Clone the repo, load into your browser as an unpacked extension, go to your webp
 
 - [ ] Add options to add custom rules and weights
 - [ ] Add a button to reveal the true score (remove upper limit of 0)
+- [ ] Organize code to better accomodate site and extension
+- [ ] Better design for site
 
 ## How do I get a score above 0?
 

@@ -1,7 +1,9 @@
 ---
+import Callout from '../components/Callout.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="<div> Soup!">
+	<Callout />
 	<main>
 		<h1>&lt;div> Soup!</h1>
 		<search>
@@ -26,6 +28,7 @@ import Layout from '../layouts/Layout.astro';
 	import { rules } from '../lib/rules.js'
 	const form = document.querySelector('form');
 	const parser = new DOMParser();
+	const details = document.querySelector('details');
 	form?.addEventListener('submit', async (e) => {
 		e.preventDefault();
 
@@ -40,89 +43,6 @@ import Layout from '../layouts/Layout.astro';
 			el.hasAttribute('track') && el.removeAttribute('track');
 		})
 		await Soup.test(body.innerHTML, rules);
-		document.querySelector('details')?.toggleAttribute('open');
+		if (!details?.hasAttribute('open')) details?.toggleAttribute('open', true);
 	})
 </script>
-<style>
-	#test {
-		display: none;
-	}
-	body {
-		color: white;
-	}
-
-/* Label */
-.score {
-	font-size: 2.5rem;
-	font-weight: bold;
-	margin: 0;
-	text-align: center;
-	background-color: #edefff;
-	margin-inline: -1ch;
-}
-/* Output */
-#score {
-	display: block;
-	background-color: var(--soup-bg, #ABF5D1) !important;
-	color: var(--soup-c, #121114) !important;
-}
-
-.less-than-100 {
-	--soup-bg: #eee;
-}
-
-.less-than-250 {
-	--soup-bg: #FFF0B3;
-}
-
-.less-than-500 {
-	--soup-bg: #FFC400;
-}
-
-.less-than-1000 {
-	--soup-bg: #FF8B00;
-}
-
-.less-than-5000 {
-	--soup-bg: #FF5630;
-	--soup-c: white;
-}
-
-.less-than-10000 {
-	--soup-bg: #BF2600;
-	--soup-c: white;
-}
-
-summary {
-	font-size: 1.25rem;
-	background: #edefff;
-	color: #121114;
-	padding-inline: 1ch;
-}
-
-details > div {
-	padding-inline: 1ch;
-}
-details p {
-	font-size: 1.5em;
-	text-decoration: underline;
-}
-
-code {
-	font-size: 0.95em;
-	background-color: #edefff;
-	padding: 0.15ch 0.3ch;
-	font-size-adjust: ex-height from-font;
-}
-
-nav ul {
-	display: flex;
-	gap: 1ch;
-	margin: 0;
-	padding-inline: 1ch;
-	background: #edefff;
-}
-nav [aria-current="page"] {
-	text-decoration: none;
-}
-</style>
