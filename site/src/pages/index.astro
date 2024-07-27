@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Welcome to Astro.">
+<Layout title="<div> Soup!">
 	<main>
 		<h1>&lt;div> Soup!</h1>
 		<search>
@@ -34,7 +34,13 @@ import Layout from '../layouts/Layout.astro';
 
 		const { body } = parser.parseFromString(content, 'text/html');
 		body.querySelectorAll('script,style,link').forEach(el => el.remove());
-		Soup.test(body.innerHTML, rules);
+		body.querySelectorAll('img,video,audio,source').forEach(el => {
+			el.hasAttribute('src') && el.removeAttribute('src');
+			el.hasAttribute('srcset') && el.removeAttribute('srcset');
+			el.hasAttribute('track') && el.removeAttribute('track');
+		})
+		await Soup.test(body.innerHTML, rules);
+		document.querySelector('details')?.toggleAttribute('open');
 	})
 </script>
 <style>
