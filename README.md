@@ -8,6 +8,10 @@ Worried you might be forcing your users to swim around in a bunch of `<div>`'s w
 
 Clone the repo, load into your browser as an unpacked extension, go to your webpage and click the extension icon. A score will be generated based on the rules below:
 
+### What if I don't know what any of that means?
+
+Then feel free to [checkout the web version here](https://divsoup.netlify.app), just keep in mind that [you might get a less accurate score](https://github.com/gingerchew/div-soup#using-the-website-vs-the-extension).
+
 ## ToDo:
 
 - [ ] Extension: Add options to add custom rules and weights
