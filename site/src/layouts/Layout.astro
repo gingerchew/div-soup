@@ -115,13 +115,17 @@ const { title } = Astro.props;
 		padding: 1ch 1.25ch;
 		border-radius: 10px;
 		font-weight: 600;
+		background-color: #edefff;
+	}
+	summary {
+		cursor: pointer;
 	}
 	#test {
 		display: none;
 	}
 
 	.score:has(.less-than-100) {
-		--soup-bg: #eee;
+		--soup-bg: #edefff;
 	}
 
 	.score:has(.less-than-250) {
@@ -144,5 +148,22 @@ const { title } = Astro.props;
 	.score:has(.less-than-10000) {
 		--soup-bg: #bf2600;
 		--soup-c: white;
+	}
+
+	#good li {
+		padding-inline-start: 1ch;
+		&::marker {
+			font-size: 1.5em;
+			content: '👍';
+			content: '👍' / 'thumbs up emoji';
+		}
+	}
+	#reasons li {
+		padding-inline-start: 1ch;
+		&::marker {
+			font-size: 1.5em;
+			content: '👎';
+			content: '👎' / 'thumbs down emoji';
+		}
 	}
 </style>

@@ -7,20 +7,27 @@ import CopyButton from "./CopyButton.astro"
 </div>
 <details name="report" hidden>
     <summary>Report</summary>
-	<p>Good Practice</p>
-	<ul role="list" id="good"></ul>
-	<p>Violations</p>
-	<ul role="list" id="reasons"></ul>
+	<div>
+		<p>Good Practice</p>
+		<ul role="list" id="good"></ul>
+		<p>Violations</p>
+		<ul role="list" id="reasons"></ul>
+	</div>
 </details>
 <style>
+	details {
+		--inline-padding: 1.5ch;
+	}
 	summary {
 		font-size: 1.25rem;
+		padding: 1ch var(--inline-padding);
+		border-radius: 10px;
 		background: #edefff;
 		color: #121114;
 		padding-inline: 1ch;
 	}
 	details > div {
-		padding-inline: 1ch;
+		padding-inline: var(--inline-padding);
 	}
 	details p {
 		font-size: 1.5em;
@@ -50,5 +57,11 @@ import CopyButton from "./CopyButton.astro"
 		.copy-btn {
 			grid-column: 3;
 		}
+	}
+	ul {
+		display: flex;
+		gap: 1ch;
+		flex-flow: column;
+		line-height: 1.5;
 	}
 </style>
