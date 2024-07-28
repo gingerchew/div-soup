@@ -26,7 +26,7 @@ import Layout from '../layouts/Layout.astro';
 
 	const form = document.querySelector<HTMLFormElement>('form')!;
 	const parser = new DOMParser();
-	const details = document.querySelector('details');
+	const details = document.querySelector<HTMLDetailsElement>('details[name="report"]');
 	const input = document.querySelector<HTMLInputElement>('#website')!;
 
 	function cleanBody({ body }: Document) {
