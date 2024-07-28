@@ -1,0 +1,33 @@
+---
+
+---
+<div>
+    <button id="copyURL">Copy</button>
+    <div id="error"></div>
+</div>
+<script>
+    const input = document.querySelector<HTMLInputElement>('#website')!;
+    const btn = document.getElementById('copyURL')!;
+    const error = document.getElementById('error')!;
+    const originalText = btn.textContent;
+    const successText = 'Copied!';
+    const jsonReport = document.getElementById('urlencodeableResult')!;
+
+    btn.addEventListener('click', async () => {
+        error.textContent = '';
+        try {
+            const url = new URL(location.href);
+            url.searchParams.set('w', input.value);
+            
+            await navigator.clipboard.writeText(url.href);
+            btn.textContent = successText;
+            setTimeout(() => {
+                btn.textContent = originalText;
+            }, 1500);
+        } catch(e: any) {
+            if (e.message.indexOf('Failed to construct')) {
+                error.textContent = 'Invalid URL'
+            }
+        }
+    })
+</script>

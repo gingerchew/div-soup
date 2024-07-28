@@ -1,4 +1,5 @@
 const notSelector = `*:not(div,script,style,link,noscript,template,slot,source,datalist,option,optgroup,track)`;
+const nonDiv = `Used more non-<code>&lt;div></code> elements than <code>&lt;div></code> elements`;
 
 export class Soup {
     /*static get settings() {
@@ -52,24 +53,35 @@ export class Soup {
         this.output.className = this.outputClasses;
     }
 
+    static formatMessage(str, count) {
+        return str.replaceAll(/</g, '&lt;').replaceAll(/(`)(.*?)(`)/g, '<code>$2</code>').replace(/\$/, `<b>${count}</b>`)
+    }
+
     static async test(incomingHTML, rules) {
         this.reset();
 
         this.root.innerHTML = incomingHTML;
 
         const report = [];
-        
-        for (const { selector, type, message, weight } of rules) {
+        const jsonReport = [];
+
+        let i = 0;
+        for (const rule of rules) {
+            const { selector, type, weight, message } = rule;
             const violators = this.root.querySelectorAll(selector);
             
-            if (violators.length === 0) continue;
+            if (violators.length === 0) {
+                continue;
+            }
+            jsonReport.push([rules.indexOf(rule), violators.length]);
+            i++;
             violators.forEach(_ => this.score += weight);
-
-            report.push([type, message.replaceAll(/</g, '&lt;').replaceAll(/(`)(.*?)(`)/g, '<code>$2</code>').replace(/\$/, `<b>${violators.length}</b>`)]);
+            report.push([type, this.formatMessage(message, violators.length)]);
         }
 
         if (this.compareDivToNonDiv()) {
-            report.push([1, `Used more non-<code>&lt;div></code> elements than <code>&lt;div></code> elements`])
+            jsonReport.push([-1, null])
+            report.push([1, nonDiv])
         }
         
         if (this.score > 0) this.score = 0;
