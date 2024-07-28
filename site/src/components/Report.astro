@@ -1,0 +1,54 @@
+---
+import CopyButton from "./CopyButton.astro"
+---
+<div class="score">
+	<h2>Score: <output id="score"></output></h2>
+    <CopyButton />
+</div>
+<details name="report" hidden>
+    <summary>Report</summary>
+	<p>Good Practice</p>
+	<ul role="list" id="good"></ul>
+	<p>Violations</p>
+	<ul role="list" id="reasons"></ul>
+</details>
+<style>
+	summary {
+		font-size: 1.25rem;
+		background: #edefff;
+		color: #121114;
+		padding-inline: 1ch;
+	}
+	details > div {
+		padding-inline: 1ch;
+	}
+	details p {
+		font-size: 1.5em;
+		text-decoration: underline;
+	}
+	.score-wrapper {
+		display: flex;
+		gap: 2ch;
+	}
+	.score {
+		font-size: 2rem;
+		font-weight: bold;
+		margin: 0;
+		text-align: center;
+		background-color: var(--soup-bg, #abf5d1) !important;
+		color: var(--soup-c, #121114) !important;
+		position: relative;
+		border-radius: 10px;
+		display: grid;
+		grid-template-columns: 1fr min-content 1fr;
+		justify-content: center;
+		align-items: center;
+		& h2 {
+			grid-column: 2;
+			margin: 0;
+		}
+		.copy-btn {
+			grid-column: 3;
+		}
+	}
+</style>
