@@ -1,4 +1,6 @@
 ---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 interface Props {
 	title: string;
 }
@@ -23,7 +25,9 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
+		<Nav />
 		<slot />
+		<Footer />
 	</body>
 </html>
 <style is:global>
@@ -37,11 +41,31 @@ const { title } = Astro.props;
 			rgb(var(--accent-light)) 30%,
 			white 60%
 		);
+		--content-width: 60ch;
 	}
 	html {
 		font-family: system-ui, sans-serif;
 		background: #13151a;
 		background-size: 224px;
+		height: 100%;
+		min-height: 100vh;
+		line-height: 1.2;
+	}
+	h1,h2,h3,h4,h5,h6 {
+		line-height: 1.5;
+		letter-spacing: -1px;
+	}
+	body {
+		max-width: min(var(--content-width), 85vw);
+		margin-inline: auto;
+		color: white;
+		display: flex;
+		flex-flow: column;
+		gap: 3ch;
+		min-height: 100%;
+	}
+	main {
+		flex: 1;
 	}
 	code {
 		font-family:
@@ -59,27 +83,14 @@ const { title } = Astro.props;
 		padding: 0.15ch 0.3ch;
 		font-size-adjust: ex-height from-font;
 	}
+	button {
+        font-size: 1.5rem;
+        padding: 1ch 1.25ch;
+        border-radius: 10px;
+        font-weight: 600;
+    }
 	#test {
 		display: none;
-	}
-	body {
-		color: white;
-	}
-
-	/* Label */
-	.score {
-		font-size: 2.5rem;
-		font-weight: bold;
-		margin: 0;
-		text-align: center;
-		background-color: #edefff;
-		margin-inline: -1ch;
-	}
-	/* Output */
-	#score {
-		display: block;
-		background-color: var(--soup-bg, #abf5d1) !important;
-		color: var(--soup-c, #121114) !important;
 	}
 
 	.less-than-100 {
@@ -106,31 +117,5 @@ const { title } = Astro.props;
 	.less-than-10000 {
 		--soup-bg: #bf2600;
 		--soup-c: white;
-	}
-
-	summary {
-		font-size: 1.25rem;
-		background: #edefff;
-		color: #121114;
-		padding-inline: 1ch;
-	}
-
-	details > div {
-		padding-inline: 1ch;
-	}
-	details p {
-		font-size: 1.5em;
-		text-decoration: underline;
-	}
-
-	nav ul {
-		display: flex;
-		gap: 1ch;
-		margin: 0;
-		padding-inline: 1ch;
-		background: #edefff;
-	}
-	nav [aria-current="page"] {
-		text-decoration: none;
 	}
 </style>

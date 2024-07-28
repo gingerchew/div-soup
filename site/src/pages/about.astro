@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="What is <div> Soup?">
+    <main>
+        <h1>What is <code>&lt;div></code> Soup?</h1>
+        <p><code>&lt;div></code> Soup is a concept for scoring how semantic a website is. Using a <code>&lt;div></code> here and there is fine, but when you use it for everything instead of the semantic alternatives, you're making your site harder to use and understand.</p>
+        <p>Enter a website, generate the report, and see how you did!</p>
+        <h2>How do I fix my score?</h2>
+        <p>Open the generated report and you can see the guidelines. The main criteria is this, the more <code>&lt;div></code> nesting you lose more points. You won't be penalized for using <code>&lt;div></code> on their own, but nest them multiple times, and you will start losing points rapidly.</p>
+        <h2>Can I get this as a browser extension?</h2>
+        <p>It actually started as one! <a href="https://github.com/gingerchew/div-soup">Clone this repo locally and load it into your browser as an unpacked extension</a>, I haven't tested it with browsers other than Chromium. If you'd like to help with cross browser testing of the extension, drop an issue and we can talk!</p>
+        <h2>What else can I do to help with soup-ification?</h2>
+        <p>Unlearn using <code>&lt;div></code> wrappers, prefer a <code>&lt;>&lt;/></code> or <code>&lt;Fragment>&lt;/Fragment></code> or your chosen frameworks equivalent.</p>
+        <p>Practice your <abbr title="Cascading Style Sheets">CSS</abbr> skills while you're unraveling your soup. Could any of these properties be merged into a single div?</p>
+        <p>Don't abstract unnecessarily and familiarize yourself <abbr title="Hyper Text Markup Language">HTML</abbr> and it's semantic elements! Components are your friend, but you don't need <code>&lt;Article></code> and <code>&lt;ArticleTitle</code> and <code>&lt;ArticleSummary</code> and <code>&lt;ArticleByLine></code>. Well crafted and thoughtful <abbr title="Hyper Text Markup Language">HTML</abbr> will convey more to users, fellow developers, and future you. Does this need to be a component with a <code>&lt;div></code> like this? <pre><code>&lt;div class="article--wrapper article--wrapper__card"></code></pre> Could it be simplified down to this? <pre><code>&lt;article class="card"></code></pre></p>
+    </main>
+</Layout>

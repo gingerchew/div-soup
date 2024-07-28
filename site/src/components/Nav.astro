@@ -1,0 +1,42 @@
+---
+const isCurrent = (href:string) => Astro.url.pathname === href;
+const nav = [
+    {
+        href: '/',
+        text: 'Report',
+    },
+    {
+        href: '/about',
+        text: 'About'
+    }
+]
+---
+<nav>
+    <h1><code>&lt;div></code> Soup!</h1>
+    <ul>
+        {nav.map(({ href, text }) => <li><a {href} aria-current={isCurrent(href) ? 'page' : false}>{text}</a></li>)}
+    </ul>
+</nav>
+<style>
+    nav {
+        display: flex;
+        gap: 1ch;
+        align-items: center;
+        justify-content: space-between;
+    }
+    ul {
+        display: inherit;
+        margin: 0;
+        padding: 0;
+        gap: inherit;
+        list-style-type: none;
+        font-size: 1.25rem;
+    }
+    a {
+        color: inherit;
+        text-underline-offset: 5px;
+        &[aria-current="page"] {
+            text-decoration: none;
+        }
+    }
+</style>
