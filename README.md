@@ -10,10 +10,11 @@ Clone the repo, load into your browser as an unpacked extension, go to your webp
 
 ## ToDo:
 
-- [ ] Add options to add custom rules and weights
-- [ ] Add a button to reveal the true score (remove upper limit of 0)
-- [ ] Organize code to better accomodate site and extension
-- [ ] Better design for site
+- [ ] Extension: Add options to add custom rules and weights
+- [ ] Extension & Site: Add a button to reveal the true score (remove upper limit of 0)
+- [ ] Extension & Site: Organize code to better accomodate site and extension
+- [x] Better design for site
+- [ ] Site: Add 11ty screenshot api for preview of url
 
 ## How do I get a score above 0?
 
@@ -35,7 +36,6 @@ This choice was made because of how content on the web works. A site that has an
 
 - Number of `<div>`'s used
 - How many `<div>`'s are used compared to how many non-`<div>`'s are used[^2]
-
 
 ## Reasoning behind scoring:
 
@@ -93,6 +93,10 @@ The goal behind adding this selector was to decimate the score of any site that 
 ### `[onclick]:not(button, a, input)`
 
 Stop adding click handlers to `<div>` and non-control type elements!
+
+## Using the website vs. the extension
+
+Because of how the website pulls the html to generate the report, it can only use what the server generates. If your site is entirely clientside generated (It probably shouldn't be) you should use the extension to get an accurate score.
 
 [^1]: The goal is to use semantic elements. `script`,`style`,`link`,`noscript`,`template`, and `slot` are excluded because they are used by the author, and hold no meaning for the user. `datalist`,`option`, and `optgroup` are excluded because they exist within controls and could lead to false positives. `source` and `track` are excluded because they are used in tandem with media elements `video`, `audio`, `img`, and `picture` and could lead to false positives.
 
