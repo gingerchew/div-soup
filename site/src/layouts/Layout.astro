@@ -93,28 +93,28 @@ const { title } = Astro.props;
 		display: none;
 	}
 
-	.less-than-100 {
+	.score:has(.less-than-100) {
 		--soup-bg: #eee;
 	}
 
-	.less-than-250 {
+	.score:has(.less-than-250) {
 		--soup-bg: #fff0b3;
 	}
 
-	.less-than-500 {
+	.score:has(.less-than-500) {
 		--soup-bg: #ffc400;
 	}
 
-	.less-than-1000 {
+	.score:has(.less-than-1000) {
 		--soup-bg: #ff8b00;
 	}
 
-	.less-than-5000 {
+	.score:has(.less-than-5000) {
 		--soup-bg: #ff5630;
 		--soup-c: white;
 	}
 
-	.less-than-10000 {
+	.score:has(.less-than-10000) {
 		--soup-bg: #bf2600;
 		--soup-c: white;
 	}
