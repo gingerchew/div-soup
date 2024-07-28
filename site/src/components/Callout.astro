@@ -2,17 +2,25 @@
 ---
 <aside>
     <blockquote>
-        <p>Hey! Know how to make sites look pretty? Would love your help on improving the site :) <a href="https://github.com/gingerchew/div-soup">Find the repo here!</a></p>
+        <details>
+            <summary>Hey! Know how to make sites look pretty?</summary>
+            <p>Would love your help on improving the site :) <a href="https://github.com/gingerchew/div-soup">Find the repo here!</a></p>
+        </details>
     </blockquote>
 </aside>
 <style>
     blockquote {
         padding: 3ch 4.5ch;
         border-radius: 1ch;
-        max-width: fit-content;
         background-color: hsl(100 100 255 / 0.1);
         margin: 0;
         text-wrap: pretty;
+        will-change: padding;
+        -comment-: I know it is bad to do this but just dont worry about it;
+        transition: padding 0.25s ease;
+        &:not(:has([open])) {
+            padding: 1.5ch 4.5ch;
+        }
     }
     blockquote a {
         color: white;
