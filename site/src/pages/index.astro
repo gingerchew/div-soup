@@ -1,40 +1,32 @@
 ---
 import Callout from '../components/Callout.astro';
-import CopyButton from '../components/CopyButton.astro';
+import Report from '../components/Report.astro';
+import Search from '../components/Search.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="<div> Soup!">
 	<Callout />
 	<main>
-		<h1>&lt;div&gt; Soup!</h1>
-		<search>
-			<form action="/">
-				<input type="url" id="website" name="website" value="https://" />
-			</form>
-		</search>
-		<div>
-			<h2>Score: <output id="score"></output></h2>
-			<CopyButton />
-			<output hidden id="urlencodeableResult"></output>
-		</div>
-		<details name="info">
-			<summary>Report</summary>
-			<p>Good Practice</p>
-			<ul role="list" id="good"></ul>
-			<p>Violations</p>
-			<ul role="list" id="reasons"></ul>
-		</details>
+		<Search />
+		<Report />
 	</main>
 	<div id="test"></div>
 </Layout>
+<style>
+	main {
+		display: flex;
+		gap: 2ch;
+		flex-flow: column;
+	}
+</style>
 <script>
 	import { actions } from 'astro:actions';
 	import { Soup } from '../components/Soup.js';
 	import { rules } from '../lib/rules.js'
+
 	const form = document.querySelector<HTMLFormElement>('form')!;
 	const parser = new DOMParser();
 	const details = document.querySelector('details');
-	const jsonOutput = document.getElementById('urlencodeableResult')!;
 	const input = document.querySelector<HTMLInputElement>('#website')!;
 
 	function cleanBody({ body }: Document) {
@@ -48,24 +40,24 @@ import Layout from '../layouts/Layout.astro';
 		return body.innerHTML;
 	}
 
-    const currentURL = new URL(location.href);
-    if (currentURL.searchParams.has('w')) {
-		input.value = currentURL.searchParams.get('w')!;
-        const { success, content } = await actions.getWebsite(new FormData(form))
+	async function process() {
+		const { success, content } = await actions.getWebsite(new FormData(form))
 		if (!success) throw new Error('Could not process website url.');
-
+	
 		const cleanedBody = cleanBody(parser.parseFromString(content, 'text/html'));
 		await Soup.test(cleanedBody, rules);
+		details?.removeAttribute('hidden');
 		if (!details?.hasAttribute('open')) details?.toggleAttribute('open', true);
 	}
 
-	form?.addEventListener('submit', async (e) => {
-		e.preventDefault();
+    const currentURL = new URL(location.href);
+    if (currentURL.searchParams.has('w')) {
+		input.value = currentURL.searchParams.get('w');
+		process();
+	}
 
-		const { success, content } = await actions.getWebsite(new FormData(form));
-		if (!success) throw new Error('Could not process website url.');
-		const cleanedBody = cleanBody(parser.parseFromString(content, 'text/html'));
-		await Soup.test(cleanedBody, rules);
-		if (!details?.hasAttribute('open')) details?.toggleAttribute('open', true);
+	form?.addEventListener('submit', (e) => {
+		e.preventDefault();
+		process();
 	})
 </script>
