@@ -5,20 +5,10 @@ import Search from '../components/Search.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="<div> Soup!">
-	<Callout />
-	<main>
-		<Search />
-		<Report />
-	</main>
+	<Search />
+	<Report />
 	<div id="test"></div>
 </Layout>
-<style>
-	main {
-		display: flex;
-		gap: 2ch;
-		flex-flow: column;
-	}
-</style>
 <script>
 	import { actions } from 'astro:actions';
 	import { Soup } from '../components/Soup.js';

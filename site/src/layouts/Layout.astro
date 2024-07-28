@@ -1,11 +1,13 @@
 ---
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import Callout from "../components/Callout.astro";
 interface Props {
 	title: string;
+	isContent?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, isContent = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -48,7 +50,10 @@ const { title } = Astro.props;
 	</head>
 	<body>
 		<Nav />
-		<slot />
+		<main class={isContent ? 'content' : ''}>
+			<slot />
+		</main>
+		<Callout />
 		<Footer />
 	</body>
 </html>
@@ -79,7 +84,7 @@ const { title } = Astro.props;
 	h4,
 	h5,
 	h6 {
-		line-height: 1.5;
+		line-height: 1.2;
 		letter-spacing: -1px;
 	}
 	body {
@@ -90,9 +95,17 @@ const { title } = Astro.props;
 		flex-flow: column;
 		gap: 3ch;
 		min-height: 100%;
+		line-height: 1.5
 	}
+
 	main {
+		display: flex;
+		gap: 2ch;
+		flex-flow: column;
 		flex: 1;
+		&.content > * + * {
+			margin: 0;
+		}
 	}
 	code {
 		font-family:
@@ -119,6 +132,9 @@ const { title } = Astro.props;
 	}
 	summary {
 		cursor: pointer;
+	}
+	h1 {
+		font-size: 2.25rem;
 	}
 	#test {
 		display: none;
