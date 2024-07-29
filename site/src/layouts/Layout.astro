@@ -53,7 +53,6 @@ const { title, isContent = false } = Astro.props;
 		<main class={isContent ? 'content' : ''}>
 			<slot />
 		</main>
-		<Callout />
 		<Footer />
 	</body>
 </html>
@@ -69,10 +68,13 @@ const { title, isContent = false } = Astro.props;
 			white 60%
 		);
 		--content-width: 60ch;
+		--light: #edefff;
+		--light-alt: hsl(233, 100%, 90%);
+		--dark: #13151a;
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
+		background: var(--dark);
 		background-size: 224px;
 		height: 100%;
 		min-height: 100vh;
@@ -90,7 +92,7 @@ const { title, isContent = false } = Astro.props;
 	body {
 		max-width: min(var(--content-width), 85vw);
 		margin-inline: auto;
-		color: white;
+		color: var(--light);
 		display: flex;
 		flex-flow: column;
 		gap: 3ch;
@@ -119,16 +121,29 @@ const { title, isContent = false } = Astro.props;
 			monospace;
 		color: #121114;
 		font-size: 0.95em;
-		background-color: #edefff;
+		background-color: var(--light);
 		padding: 0.15ch 0.3ch;
 		font-size-adjust: ex-height from-font;
+	}
+	a:hover {
+		text-decoration-style: dashed;
 	}
 	button {
 		font-size: 1.5rem;
 		padding: 1ch 1.25ch;
 		border-radius: 10px;
 		font-weight: 600;
-		background-color: #edefff;
+		background-color: var(--light);
+		border: 3px solid var(--light);
+		transition: all 0.15s ease;
+		transition-property: background-color, border-color, color;
+	}
+	button:hover {
+		background-color: var(--dark);
+		color: var(--light);
+	}
+	button:active {
+		border-color: var(--dark);
 	}
 	summary {
 		cursor: pointer;

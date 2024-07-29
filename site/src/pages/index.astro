@@ -42,7 +42,7 @@ import Layout from '../layouts/Layout.astro';
 
     const currentURL = new URL(location.href);
     if (currentURL.searchParams.has('w')) {
-		input.value = currentURL.searchParams.get('w');
+		input.value = currentURL.searchParams.get('w')!;
 		process();
 	}
 

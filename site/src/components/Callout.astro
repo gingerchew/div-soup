@@ -12,12 +12,9 @@
     blockquote {
         padding: 3ch 4.5ch;
         border-radius: 1ch;
-        background-color: hsl(100 100 255 / 0.1);
+        background-color: hsl(100 100% 100% / 0.1);
         margin: 0;
         text-wrap: pretty;
-        will-change: padding;
-        -comment-: I know it is bad to do this but just dont worry about it;
-        transition: padding 0.25s ease;
         &:not(:has([open])) {
             padding: 1.5ch 4.5ch;
         }
