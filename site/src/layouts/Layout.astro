@@ -154,6 +154,10 @@ const { title, isContent = false } = Astro.props;
 	#test {
 		display: none;
 	}
+	pre {
+		max-width: 100%;
+		overflow: scroll;
+	}
 
 	.score:has(.less-than-100) {
 		--soup-bg: #edefff;
