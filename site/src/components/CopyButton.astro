@@ -31,5 +31,19 @@
 <style>
     button {
         padding: 0.75ch 1ch;
+        background-color: var(--dark);
+        color: var(--light);
+        border-color: var(--dark);
+
+        &:hover {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        &:focus,
+        &:active {
+            border-color: var(--light);
+        }
     }
+    
 </style>
