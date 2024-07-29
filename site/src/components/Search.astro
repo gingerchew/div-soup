@@ -6,16 +6,20 @@
 </search>
 <style>
     form {
+        --fz: clamp(1rem, 1rem + 0.1vw, 1.5rem);
         display: grid;
         grid-template-columns: 3fr 1fr;
         gap: 1ch;
     }
     input {
-        font-size: 1.5rem;
+        font-size: inherit;
         font-weight: 600;
         padding: 1ch 1.25ch;
         border-radius: 10px;
-        background-color: #edefff;
+        background-color: var(--light);
         max-width: 100%;
+    }
+    button {
+        font-size: inherit;
     }
 </style>
