@@ -7,12 +7,20 @@ export const server = {
             website: z.string().url(),
         }),
         handler: async ({ website }) => {
-            if (website.indexOf('https://') < 0) return { success: false, content: '' };
-
-            const result = await fetch(website);
-            const content = await result.text();
-
-            return { success: true, content }
+            try {
+                let url = new URL(website);
+                switch(true) {
+                    case url.protocol !== 'https:':
+                        url.protocol = 'https:';
+                    // add more url fixes and checks as necessary
+                }
+                const result = await fetch(url.href);
+                const content = await result.text();
+    
+                return { success: true, content }
+            } catch(e:any) {
+                return { success: false, content: '', message: e.message }
+            }
         }
     })
 };
